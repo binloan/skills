@@ -1,10 +1,10 @@
 # binloan-masterskill
 
-An agent skill for planning, implementing, and committing features. It keeps progress in the project so another agent can resume the work.
+A development skill for coding agents. It keeps feature plans and progress in your repository so another agent can pick up where the last one stopped.
 
 ## Install
 
-From the project where you want to use the skill, run:
+Run this in the project where you want to use the skill.
 
 ```sh
 npx skills add binloan/binloan-masterskill --skill binloan-masterskill
@@ -14,6 +14,12 @@ To install from a local checkout, replace `binloan/binloan-masterskill` with the
 
 ## Use
 
-Ask your agent: “Use binloan-masterskill to add CSV export to the reports page.” The agent checks project plans, records progress, and commits the finished feature.
+> Use binloan-masterskill to add CSV export to the reports page.
 
-See the [skill instructions](skills/binloan-masterskill/SKILL.md) for the workflow and the [blueprint](BLUEPRINT.md) for the original rules and authoring process.
+The agent records the export plan in `plans/`, tracks its status in `plans/STATE.md`, and follows the project’s coding conventions. When the feature is complete, it commits the feature’s changes automatically.
+
+To resume in a later session, ask the next agent to continue the CSV export plan. It checks the recorded progress against the implementation before picking up the next step.
+
+## Rules
+
+The [skill](skills/binloan-masterskill/SKILL.md) contains 13 rules with examples covering planning, implementation, workspace hygiene, UI design and copy, documentation, and commits. The [blueprint](BLUEPRINT.md) holds approved wording and the review process for proposed changes.
