@@ -7,6 +7,8 @@ description: Use the Binloan development workflow to plan or resume feature impl
 
 Apply these rules to the project you are working on. Project paths are relative to its root.
 
+## Decisions and planning
+
 **1. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
 
 ✅ The export format is unclear. The agent asks “CSV or XLSX?” and waits for the user’s answer.
@@ -20,6 +22,8 @@ Before coding, write the proposed approach and steps in `plans/<plan-name>.md`. 
 ✅ One agent writes the export plan, marks it active, and records the finished CSV writer. The next agent finds the plan through `STATE.md`, verifies the writer, finishes the tests, and marks the plan complete.
 
 ❌ One agent builds the CSV writer and tracks progress in chat. The next agent starts from scratch and builds the writer again.
+
+## Implementation and workspace hygiene
 
 **3. Follow project coding conventions**
 
@@ -47,6 +51,8 @@ Store temporary files, large working files, and intermediate outputs in `tmp/`. 
 
 ❌ The agent extracts the same archive into the project root and commits the extracted files.
 
+## Interface copy
+
 **6. Use icons and short labels**
 
 Use icons and short labels. Add text only when it is essential to understand the interface or take an action.
@@ -54,6 +60,8 @@ Use icons and short labels. Add text only when it is essential to understand the
 ✅ The button shows a report icon and the label “Preview.”
 
 ❌ The button says “Preview report” with the subtitle “Text generated, content not human verified, research ongoing.”
+
+## Human and agent documentation
 
 **7. Separate human and agent documentation**
 
@@ -79,6 +87,8 @@ Create `AGENTS.md` and `CLAUDE.md` in the project root. Maintain shared instruct
 
 ❌ The agent copies the link into both files, then updates only `AGENTS.md` when the index moves.
 
+## Feature completion and commits
+
 **10. Write single-author commit messages**
 
 Use the bundled [caveman-commit reference](references/caveman-commit.md) to write each commit message. Keep the Git author as the sole author.
@@ -94,6 +104,8 @@ Keep `.gitignore` current. When a feature is complete, automatically commit only
 ✅ CSV export is complete. The agent ignores the export cache and commits the feature as `feat(export): add CSV download`, using `caveman-commit` and a single author.
 
 ❌ CSV export is complete. The agent commits the cache with the feature, uses `misc updates` as the message, and adds a `Co-authored-by` trailer.
+
+## Reference material and UI content
 
 **12. Let the project guide the design**
 

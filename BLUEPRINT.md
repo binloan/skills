@@ -155,6 +155,7 @@ Use the conversation to understand what to build. Write UI copy for the person u
 
 ## Skill production rules
 
+- Use the category headings and rule order from “Original rules” in the installed skill.
 - Record every rule, note, open question, and approved change that affects the skill here before editing the skill. Preserve the original rules above verbatim. When a decision changes, revise the affected guidance in place and identify which original rule it clarifies or supersedes.
 - Write short, actionable instructions in `SKILL.md`. Use its description to say when the skill applies. Keep essential rules in the entry point and link supporting material only at the step that needs it.
 - Phrase rules positively. Replace each prohibition with a specific action or permitted outcome. Check that the rewrite enforces the same behavior as the original.
