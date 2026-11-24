@@ -4,50 +4,11 @@ This document is the maintainer’s source of truth for [binloan-masterskill](sk
 
 ## Original rules
 
-### Decisions and planning
-
-```text
-- do not fill in open questions automatically, come back to the user and ask
-- Write steps and implementation into a separete plan which is updateable. have a state document that tells which current plan is active and which were done and which not
-```
-
-### Implementation and workspace hygiene
-
-```text
-- Always use the related framework and language coding guidelines
-- Turn actions into repeatable scripts, do not run bash commands directly but rather make the reproducable and point the agent documentation to it for the future
-- put temporary, large or intermedaite files into a special excluded folder or section and clean them once they are not needed anymore
-```
-
-### Interface copy
-
-```text
-- Prefer icons and labels only, no extra text, no explainers, no prose that isn't absolutely necessary
-```
-
-### Human and agent documentation
-
-```text
-- build docs both for agents as well as for humans, make sure they are accurate, concise and have a clear structure, do not just append content
-- always target the readme to be a human read file. Keep it concise and clear and up to date.
-- create an agent.md and a claude.md, make calude always in sny with agent
-```
-
-### Feature completion and commits
-
-```text
-- use caveman-commit to write commit messages, do not put any co-author
-- commit automaticlly once a feature is done, also make sure gitignore is always up to date
-```
-
-### Reference material and UI content
-
-```text
-- Example documents or files are uniquely meant for inspiration. Direct copy or tight adherence to the files contents must be prevented.
-- Leakage of conversation text into UI. Prevent UI elements to contain text or findings from the chat conversation.
-```
+*All submitted rules are approved.*
 
 ## Approved skill rules
+
+### Decisions and planning
 
 **1. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
 
@@ -64,6 +25,8 @@ Before coding, write the proposed approach and steps in `plans/<plan-name>.md`. 
 > ✅ One agent writes the export plan, marks it active, and records the finished CSV writer. The next agent finds the plan through `STATE.md`, verifies the writer, finishes the tests, and marks the plan complete.
 >
 > ❌ One agent builds the CSV writer and tracks progress in chat. The next agent starts from scratch and builds the writer again.
+
+### Implementation and workspace hygiene
 
 **3. Follow project coding conventions**
 
@@ -94,6 +57,8 @@ Store temporary files, large working files, and intermediate outputs in `tmp/`. 
 >
 > ❌ The agent extracts the same archive into the project root and commits the extracted files.
 
+### Interface copy
+
 **6. Use icons and short labels**
 
 Use icons and short labels. Add text only when it is essential to understand the interface or take an action.
@@ -102,6 +67,8 @@ Use icons and short labels. Add text only when it is essential to understand the
 > ✅ The button shows a report icon and the label “Preview.”
 >
 > ❌ The button says “Preview report” with the subtitle “Text generated, content not human verified, research ongoing.”
+
+### Human and agent documentation
 
 **7. Separate human and agent documentation**
 
@@ -130,6 +97,8 @@ Create `AGENTS.md` and `CLAUDE.md` in the project root. Maintain shared instruct
 >
 > ❌ The agent copies the link into both files, then updates only `AGENTS.md` when the index moves.
 
+### Feature completion and commits
+
 **10. Write single-author commit messages**
 
 Use the bundled `caveman-commit` reference to write each commit message. Keep the Git author as the sole author.
@@ -147,6 +116,8 @@ Keep `.gitignore` current. When a feature is complete, automatically commit only
 > ✅ CSV export is complete. The agent ignores the export cache and commits the feature as `feat(export): add CSV download`, using `caveman-commit` and a single author.
 >
 > ❌ CSV export is complete. The agent commits the cache with the feature, uses `misc updates` as the message, and adds a `Co-authored-by` trailer.
+
+### Reference material and UI content
 
 **12. Let the project guide the design**
 
@@ -168,14 +139,14 @@ Use the conversation to understand what to build. Write UI copy for the person u
 
 ## Skill production rules
 
-- Use the category headings and rule order from “Original rules” in the installed skill.
-- Record every rule, note, open question, and approved change that affects the skill here before editing the skill. Preserve the original rules above verbatim. When a decision changes, revise the affected guidance in place and identify which original rule it clarifies or supersedes.
+- Use the category headings and rule order from “Approved skill rules” in the installed skill.
+- Record every rule, note, open question, and approved change that affects the skill here before editing the skill. Keep submitted wording verbatim in “Original rules” while it awaits approval. When a decision changes, revise the affected guidance in place.
 - Write short, actionable instructions in `SKILL.md`. Use its description to say when the skill applies. Keep essential rules in the entry point and link supporting material only at the step that needs it.
 - Phrase rules positively. Replace each prohibition with a specific action or permitted outcome. Check that the rewrite enforces the same behavior as the original.
 - Format each skill rule like rule 1. Give its number and short title, then state the full rule. Follow it with a single GitHub Markdown note callout containing exactly two examples from the same situation, one line each. Start the positive example with ✅ and the negative example with ❌. Describe the agent’s action in plain, direct language.
-- Review one rule at a time in chat. Start each review with the original rule verbatim in a code block. Follow it with the proposed rule and both examples. Keep drafts in chat and copy approved wording verbatim into “Approved skill rules.”
+- Review one rule at a time in chat. Start each review with the original rule verbatim in a code block. Follow it with the proposed rule and both examples. Keep drafts in chat. On approval, record the approved wording and examples under their category in “Approved skill rules” and remove the corresponding original in the same edit.
 - Give each document one job. The editable plan holds implementation steps and progress. The state document points to plans and records their status. Agent guidance identifies applicable coding conventions and repeatable scripts. Human documentation explains how to use the project.
 - Keep shared agent instructions in one authoritative place and make the Claude instructions follow it. Apply the preference for icons and labels to interfaces. Use the prose needed to keep instructions and human documentation understandable.
 - For commit messages, load the bundled [caveman-commit snapshot](skills/binloan-masterskill/references/caveman-commit.md) on demand and omit co-author trailers. The main skill owns the decision to commit a completed feature. Refresh the snapshot manually.
 - Ask the user when an unresolved choice affects behavior. Record the question here and incorporate the answer before generating dependent instructions.
-- After each revision, review this document as a whole. Trace each original rule and later decision to the intended behavior, resolve conflicting instructions with the user, and check file roles and links. When producing the skill, repeat that review against the installed files and confirm they work without this blueprint.
+- After each revision, review this document as a whole. Trace each approved rule and later decision to the intended behavior, resolve conflicting instructions with the user, and check file roles and links. When producing the skill, repeat that review against the installed files and confirm they work without this blueprint.
