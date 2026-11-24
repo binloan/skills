@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+node_modules/
+__pycache__/
+.venv/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
