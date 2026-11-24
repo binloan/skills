@@ -1,31 +1,19 @@
 # binloan-masterskill
 
-TODO: Explain what someone can accomplish with this skill in one sentence.
+An agent skill for planning, implementing, and committing features. It keeps progress in the project so another agent can resume the work.
 
 ## Install
 
-From the project where you want to use the skill, run the following command with Node.js 22.20 or later. Replace `YOUR_GITHUB_OWNER` with the GitHub user or organization that owns the public repository.
+From the project where you want to use the skill, run:
 
 ```sh
-npx skills add YOUR_GITHUB_OWNER/binloan-masterskill --skill binloan-masterskill
+npx skills add binloan/binloan-masterskill --skill binloan-masterskill
 ```
 
-## Try it
+To install from a local checkout, replace `binloan/binloan-masterskill` with the path to that checkout.
 
-TODO: Give one prompt a user can paste into their agent after installation.
+## Use
 
-## Finish and publish the template
+Ask your agent: “Use binloan-masterskill to add CSV export to the reports page.” The agent checks project plans, records progress, and commits the finished feature.
 
-1. Fill in the description, inputs, workflow, and example in [SKILL.md](skills/binloan-masterskill/SKILL.md). The description helps agents decide when to use the skill.
-2. Replace the `TODO` fields and `YOUR_GITHUB_OWNER` in this README. If you choose a license, add its text in a root `LICENSE` file.
-3. From the repository root, run `npx skills add . --list`. The output should include `binloan-masterskill`.
-4. Create an empty public GitHub repository named `binloan-masterskill`. From this directory, publish your completed files with the commands below.
-
-```sh
-git add .
-git commit -m "Add binloan-masterskill"
-git remote add origin https://github.com/YOUR_GITHUB_OWNER/binloan-masterskill.git
-git push -u origin main
-```
-
-After the push, run the install command from a separate project and try the example prompt. See the [official skills CLI guide](https://github.com/vercel-labs/skills).
+See the [skill instructions](skills/binloan-masterskill/SKILL.md) for the workflow and the [blueprint](BLUEPRINT.md) for the original rules and authoring process.
