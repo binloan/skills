@@ -1,6 +1,6 @@
 # Masterskill blueprint
 
-This document is the maintainer’s source of truth for [masterskill](skills/masterskill/SKILL.md). Keep it in the repository root, outside the installed skill. The skill should be quick to load and easy to follow.
+This document is the maintainer’s source of truth for [masterskill](skills/masterskill/SKILL.md) and [masterskill-migration](skills/masterskill-migration/SKILL.md). Keep it in the repository root, outside the installed skills. Keep each skill quick to load and easy to follow.
 
 ## Original rules
 
@@ -164,16 +164,39 @@ Use the conversation to understand what to build. Write UI copy for the person u
 >
 > ❌ The upload screen says “During testing, we found that users sometimes upload the same file twice.”
 
+## Approved masterskill-migration rules
+
+Reorganize an existing project while preserving its behavior, data, and supported workflows. Use for structural changes, including adoption of the Masterskill layout.
+
+### Decisions and planning
+
+**1. Inspect and plan.** Map what depends on the paths being moved and record which checks pass or fail before editing. Write the proposed layout, stages, checks, and rollback in `plans/<name>.md`. Track progress there and status in `plans/STATE.md`. Verify recorded progress when resuming. Ask the user about unresolved decisions and wait before taking dependent steps. Read the [investigate-first snapshot](skills/masterskill-migration/references/investigate-first.md) when a dependency or failure is unclear.
+
+### Implementation and verification
+
+**2. Move in reversible stages.** Follow project conventions and preserve existing work. Update each path with its callers. Keep old entry points working while supported callers still use them. Use tested scripts for bulk moves. Read the [migration snapshot](skills/masterskill-migration/references/migration.md) when old and new paths must coexist or rollback needs coordination.
+
+**3. Verify each stage.** Rerun baseline checks and exercise affected entry points before continuing. Record results in the plan. Fix regressions or roll back the stage while preserving the user’s work. Report any checks you couldn’t run.
+
+> ✅ Unit tests pass after a module move. The agent also installs the built package in a clean project and verifies that its public import still works.
+>
+> ❌ Unit tests pass through a local alias. The agent closes the migration while the published import is broken.
+
+### Documentation and completion
+
+**4. Update guidance and close the plan.** Fix affected README and docs paths. When adopting the Masterskill layout, link `plans/STATE.md`, `docs/agent/`, and any script index from `AGENTS.md`. Use `@AGENTS.md` in `CLAUDE.md` to load shared guidance. Clean up temporary files, update `.gitignore` as needed, and mark the plan complete after verification. Commit only the migration changes using the [caveman-commit snapshot](skills/masterskill-migration/references/caveman-commit.md) and a single-author Conventional Commit.
+
 ## Skill production rules
 
-- Use the category headings and rule order from “Approved skill rules” in the installed skill.
+- Use the category headings and rule order from each skill’s approved rules in its installed entry point.
 - Record every rule, note, open question, and approved change that affects the skill here before editing the skill. Keep submitted wording verbatim in “Original rules” while it awaits approval. When a decision changes, revise the affected guidance in place.
 - Write short, actionable instructions in `SKILL.md`. Use its description to say when the skill applies. Keep essential rules in the entry point and link supporting material only at the step that needs it.
 - Phrase rules positively. Replace each prohibition with a specific action or permitted outcome. Check that the rewrite enforces the same behavior as the original.
-- Format each skill rule like rule 1. Give its number and short title, then state the full rule. Follow it with a single GitHub Markdown note callout containing exactly two examples from the same situation, one line each. Start the positive example with ✅ and the negative example with ❌. Describe the agent’s action in plain, direct language.
+- Give each rule a number and short title, then state the full rule. Include an example pair for every `masterskill` rule and where it clarifies a practical distinction in `masterskill-migration`. Use a blockquote with one line per example from the same situation. Start the positive example with ✅ and the negative example with ❌. Describe the agent’s action in plain, direct language.
 - Review one rule at a time in chat. Start each review with the original rule verbatim in a code block. Follow it with the proposed rule and both examples. Keep drafts in chat. On approval, record the approved wording and examples under their category in “Approved skill rules” and remove the corresponding original in the same edit.
 - Give each document one job. The editable plan holds implementation steps and progress. The state document points to plans and records their status. Agent guidance identifies applicable coding conventions and repeatable scripts. Human documentation explains how to use the project.
 - Keep shared agent instructions in one authoritative place and make the Claude instructions follow it. Apply the preference for icons and labels to interfaces. Use the prose needed to keep instructions and human documentation understandable.
 - For commit messages, load the bundled [caveman-commit snapshot](skills/masterskill/references/caveman-commit.md) on demand and omit co-author trailers. The main skill owns the decision to commit a completed feature. Refresh the snapshot manually.
+- Keep `masterskill-migration` independently installable with its own reference snapshots. The investigate-first and migration snapshots come from Caveman revision [`47c61be`](https://github.com/JuliusBrussee/caveman/tree/47c61be2d10a354f0c5cbe2b90959d24c06b16c6). Refresh snapshots manually and keep the upstream license and notice with them.
 - Ask the user when an unresolved choice affects behavior. Record the question here and incorporate the answer before generating dependent instructions.
 - After each revision, review this document as a whole. Trace each approved rule and later decision to the intended behavior, resolve conflicting instructions with the user, and check file roles and links. When producing the skill, repeat that review against the installed files and confirm they work without this blueprint.
