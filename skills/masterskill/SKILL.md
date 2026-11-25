@@ -1,9 +1,9 @@
 ---
-name: binloan-masterskill
-description: Use the Binloan development workflow to plan or resume feature implementation, maintain project guidance, and commit completed features.
+name: masterskill
+description: Use a project development workflow to plan or resume feature implementation, maintain project guidance, and commit completed features.
 ---
 
-# Binloan Masterskill
+# Masterskill
 
 Apply these rules to the project you are working on. Project paths are relative to its root.
 

@@ -1,6 +1,6 @@
-# Binloan Masterskill blueprint
+# Masterskill blueprint
 
-This document is the maintainer’s source of truth for [binloan-masterskill](skills/binloan-masterskill/SKILL.md). Keep it in the repository root, outside the installed skill. The skill should be quick to load and easy to follow.
+This document is the maintainer’s source of truth for [masterskill](skills/masterskill/SKILL.md). Keep it in the repository root, outside the installed skill. The skill should be quick to load and easy to follow.
 
 ## Original rules
 
@@ -174,6 +174,6 @@ Use the conversation to understand what to build. Write UI copy for the person u
 - Review one rule at a time in chat. Start each review with the original rule verbatim in a code block. Follow it with the proposed rule and both examples. Keep drafts in chat. On approval, record the approved wording and examples under their category in “Approved skill rules” and remove the corresponding original in the same edit.
 - Give each document one job. The editable plan holds implementation steps and progress. The state document points to plans and records their status. Agent guidance identifies applicable coding conventions and repeatable scripts. Human documentation explains how to use the project.
 - Keep shared agent instructions in one authoritative place and make the Claude instructions follow it. Apply the preference for icons and labels to interfaces. Use the prose needed to keep instructions and human documentation understandable.
-- For commit messages, load the bundled [caveman-commit snapshot](skills/binloan-masterskill/references/caveman-commit.md) on demand and omit co-author trailers. The main skill owns the decision to commit a completed feature. Refresh the snapshot manually.
+- For commit messages, load the bundled [caveman-commit snapshot](skills/masterskill/references/caveman-commit.md) on demand and omit co-author trailers. The main skill owns the decision to commit a completed feature. Refresh the snapshot manually.
 - Ask the user when an unresolved choice affects behavior. Record the question here and incorporate the answer before generating dependent instructions.
 - After each revision, review this document as a whole. Trace each approved rule and later decision to the intended behavior, resolve conflicting instructions with the user, and check file roles and links. When producing the skill, repeat that review against the installed files and confirm they work without this blueprint.
