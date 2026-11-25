@@ -26,6 +26,15 @@ Before coding, write the proposed approach and steps in `plans/<plan-name>.md`. 
 >
 > ❌ One agent builds the CSV writer and tracks progress in chat. The next agent starts from scratch and builds the writer again.
 
+**15. Flag issues whenever you find them**
+
+Highlight stale, broken, or partially working items. Report the fix or ask the user for a decision.
+
+> [!NOTE]
+> ✅ “MCP was already available. I corrected the outdated guidance in `AGENTS.md`.”
+>
+> ❌ “`AGENTS.md` still lists MCP as a stretch goal. I left it unchanged.”
+
 ### Implementation and workspace hygiene
 
 **3. Follow project coding conventions**
@@ -96,6 +105,24 @@ Create `AGENTS.md` and `CLAUDE.md` in the project root. Maintain shared instruct
 > ✅ The agent updates the plan index link in `AGENTS.md`. Claude picks up the new link through `@AGENTS.md`.
 >
 > ❌ The agent copies the link into both files, then updates only `AGENTS.md` when the index moves.
+
+**14. Fix and report stale documentation**
+
+When you find outdated documentation, verify the current behavior, correct the relevant passage, and tell the user what changed.
+
+> [!NOTE]
+> ✅ The guide lists `npm start`. The agent verifies `npm run dev` starts the app, updates the guide, and reports the correction.
+>
+> ❌ The agent spots the outdated command and tells the user the guide needs an update, leaving `npm start` in place.
+
+**16. Centralize project-specific agent rules**
+
+Keep `docs/agent/rules.md` as the sole source of project-specific rules for agents. Link it from `AGENTS.md` and keep it current. Put implementation details in the relevant `docs/agent/` guide and user instructions in the relevant `docs/` guide.
+
+> [!NOTE]
+> ✅ `docs/agent/rules.md` tells agents to pair each new API endpoint with an MCP endpoint. `docs/endpoints.md` shows users how to add endpoints.
+>
+> ❌ `docs/agent/rules.md` mixes the agent’s MCP requirement with the user’s endpoint setup steps.
 
 ### Feature completion and commits
 

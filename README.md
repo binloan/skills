@@ -22,4 +22,4 @@ To resume in a later session, ask the next agent to continue the CSV export plan
 
 ## Rules
 
-The [skill](skills/binloan-masterskill/SKILL.md) contains 13 rules with examples covering planning, implementation, workspace hygiene, UI design and copy, documentation, and commits. The [blueprint](BLUEPRINT.md) holds approved wording and the review process for proposed changes.
+The [skill](skills/binloan-masterskill/SKILL.md) contains 16 rules with examples covering planning, implementation, workspace hygiene, UI design and copy, documentation, and commits. The [blueprint](BLUEPRINT.md) holds approved wording and the review process for proposed changes.
