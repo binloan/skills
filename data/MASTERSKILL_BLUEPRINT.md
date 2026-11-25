@@ -23,14 +23,14 @@ The first time you use `masterskill` in a project, put this instruction at the t
 
 ### Decisions and planning
 
-**18. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
+**2. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
 
 > [!NOTE]
 > ✅ The export format is unclear. The agent asks “CSV or XLSX?” and waits for the user’s answer.
 >
 > ❌ The export format is unclear. The agent picks CSV and starts building.
 
-**2. Write plans and track progress**
+**3. Write plans and track progress**
 
 Before coding, write the proposed approach and steps in `plans/<plan-name>.md`. Track progress in that plan. Create and maintain `plans/STATE.md` as an index of active, pending, and completed plans. Link to it from `AGENTS.md`. When picking up work, use the index to find the plan that matches the request, verify progress, and continue from there.
 
@@ -39,7 +39,7 @@ Before coding, write the proposed approach and steps in `plans/<plan-name>.md`. 
 >
 > ❌ One agent builds the CSV writer and tracks progress in chat. The next agent starts from scratch and builds the writer again.
 
-**15. Flag issues whenever you find them**
+**4. Flag issues whenever you find them**
 
 Highlight stale, broken, or partially working items. Report the fix or ask the user for a decision.
 
@@ -50,7 +50,7 @@ Highlight stale, broken, or partially working items. Report the fix or ask the u
 
 ### Implementation and workspace hygiene
 
-**3. Follow project coding conventions**
+**5. Follow project coding conventions**
 
 Before coding, read `codestyle/STYLE.md` and follow its guidance for the language and framework in use. If the file or a relevant guide is missing, warn the user and continue.
 
@@ -59,7 +59,7 @@ Before coding, read `codestyle/STYLE.md` and follow its guidance for the languag
 >
 > ❌ The agent finds the TypeScript guide but stops work because the React guide is missing.
 
-**4. Use project scripts**
+**6. Use project scripts**
 
 Use scripts for repeated file searches, vector generation, resource downloads, dataset or backend changes, and any action that needs testing before live use.
 
@@ -70,7 +70,7 @@ Reuse or create scripts in `scripts/` using a project-appropriate language. List
 >
 > ❌ The agent runs the update directly against live data.
 
-**5. Keep working files out of Git**
+**7. Keep working files out of Git**
 
 Store temporary files, large working files, and intermediate outputs in `tmp/`. Add `/tmp/` to `.gitignore` and delete each file when its job is done.
 
@@ -79,7 +79,7 @@ Store temporary files, large working files, and intermediate outputs in `tmp/`. 
 >
 > ❌ The agent extracts the same archive into the project root and commits the extracted files.
 
-**17. Track external sources**
+**8. Track external sources**
 
 For every external file or dataset you download and use, save the download in `tmp/`. In `docs/data/SOURCES.md`, record where you got it and what you used it for. Update the entry if either changes.
 
@@ -90,7 +90,7 @@ For every external file or dataset you download and use, save the download in `t
 
 ### Interface copy
 
-**6. Use icons and short labels**
+**9. Use icons and short labels**
 
 Use icons and short labels. Add text only when it is essential to understand the interface or take an action.
 
@@ -101,7 +101,7 @@ Use icons and short labels. Add text only when it is essential to understand the
 
 ### Human and agent documentation
 
-**7. Separate human and agent documentation**
+**10. Separate human and agent documentation**
 
 Put human guides directly in `docs/` and agent guides in `docs/agent/`. Link to `docs/agent/` from `AGENTS.md`. Organize each guide by topic, keep it concise, and update the relevant section to match the implementation.
 
@@ -110,7 +110,7 @@ Put human guides directly in `docs/` and agent guides in `docs/agent/`. Link to 
 >
 > ❌ The agent appends user steps, backend details, and repeated explanations to `docs/export.md`.
 
-**8. Write the README for people**
+**11. Write the README for people**
 
 Keep `README.md` brief. Explain what the project does, show how to get started, and link to `docs/` for details. In `AGENTS.md`, link to `README.md` and instruct agents to update it whenever implementation changes affect what it says.
 
@@ -119,7 +119,7 @@ Keep `README.md` brief. Explain what the project does, show how to get started, 
 >
 > ❌ The install command changes. The agent updates its own setup notes while the README still sends users through the old steps.
 
-**9. Keep agent instructions in one place**
+**12. Keep agent instructions in one place**
 
 Create `AGENTS.md` and `CLAUDE.md` in the project root. Maintain shared instructions in `AGENTS.md`. Put `@AGENTS.md` in `CLAUDE.md` so Claude loads the current instructions automatically.
 
@@ -128,7 +128,7 @@ Create `AGENTS.md` and `CLAUDE.md` in the project root. Maintain shared instruct
 >
 > ❌ The agent copies the link into both files, then updates only `AGENTS.md` when the index moves.
 
-**14. Fix and report stale documentation**
+**13. Fix and report stale documentation**
 
 When you find outdated documentation, verify the current behavior, correct the relevant passage, and tell the user what changed.
 
@@ -137,7 +137,7 @@ When you find outdated documentation, verify the current behavior, correct the r
 >
 > ❌ The agent spots the outdated command and tells the user the guide needs an update, leaving `npm start` in place.
 
-**16. Centralize project-specific agent rules**
+**14. Centralize project-specific agent rules**
 
 Keep `docs/agent/rules.md` as the sole source of project-specific rules for agents. Link it from `AGENTS.md` and keep it current. Put implementation details in the relevant `docs/agent/` guide and user instructions in the relevant `docs/` guide.
 
@@ -148,7 +148,7 @@ Keep `docs/agent/rules.md` as the sole source of project-specific rules for agen
 
 ### Feature completion and commits
 
-**10. Write single-author commit messages**
+**15. Write single-author commit messages**
 
 Use the bundled `caveman-commit` reference to write each commit message. Keep the Git author as the sole author.
 
@@ -157,9 +157,9 @@ Use the bundled `caveman-commit` reference to write each commit message. Keep th
 >
 > ❌ The agent writes the same subject and adds a `Co-authored-by` trailer.
 
-**11. Commit completed features**
+**16. Commit completed features**
 
-Keep `.gitignore` current. When a feature is complete, automatically commit only its changes. Follow rule 10 for the commit message and authorship.
+Keep `.gitignore` current. When a feature is complete, automatically commit only its changes. Follow rule 15 for the commit message and authorship.
 
 > [!NOTE]
 > ✅ CSV export is complete. The agent ignores the export cache and commits the feature as `feat(export): add CSV download`, using `caveman-commit` and a single author.
@@ -168,7 +168,7 @@ Keep `.gitignore` current. When a feature is complete, automatically commit only
 
 ### Reference material and UI content
 
-**12. Let the project guide the design**
+**17. Let the project guide the design**
 
 Start with the user’s idea and the role the result serves in the project. Use references for inspiration. Choose content and structure that fit the project as a whole.
 
@@ -177,7 +177,7 @@ Start with the user’s idea and the role the result serves in the project. Use 
 >
 > ❌ For the same screen, the agent copies the reference’s hero, cards, and testimonials, then fills them with setup instructions.
 
-**13. Keep development conversations out of the UI**
+**18. Keep development conversations out of the UI**
 
 Use the conversation to understand what to build. Write UI copy for the person using the product. Include wording or findings from chat only when the user explicitly asks to display them.
 
