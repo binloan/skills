@@ -1,4 +1,4 @@
-# Masterskill
+# Skills
 
 Skills for building features and reorganizing existing projects. Both keep plans and progress in your repository so another agent can pick up where the last one stopped.
 
@@ -31,4 +31,4 @@ The agent maps script callers, records the current checks, and verifies each rev
 
 ## Rules
 
-See [masterskill](skills/masterskill/SKILL.md) for the development workflow and [masterskill-migration](skills/masterskill-migration/SKILL.md) for structural migrations. The [blueprint](BLUEPRINT.md) holds the approved rules and review process.
+See [masterskill](skills/masterskill/SKILL.md) for the development workflow and [masterskill-migration](skills/masterskill-migration/SKILL.md) for structural migrations. The [blueprint](data/MASTERSKILL_BLUEPRINT.md) holds the approved rules and review process.
