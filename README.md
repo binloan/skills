@@ -7,10 +7,10 @@ A development skill for coding agents. It keeps feature plans and progress in yo
 Run this in the project where you want to use the skill.
 
 ```sh
-npx skills add binloan/binloan-masterskill --skill masterskill
+npx skills add binloan/skills --skill masterskill
 ```
 
-To install from a local checkout, replace `binloan/binloan-masterskill` with the path to that checkout.
+To install from a local checkout, replace `binloan/skills` with the path to that checkout.
 
 ## Use
 
