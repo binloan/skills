@@ -7,9 +7,21 @@ description: Use a project development workflow to plan or resume feature implem
 
 Apply these rules to the project you are working on. Project paths are relative to its root.
 
+## Project startup
+
+**1. Load Masterskill first**
+
+The first time you use `masterskill` in a project, put this instruction at the top of the root `AGENTS.md`. Create the file if needed.
+
+> At the start of every agent session in this project, load `masterskill` before any other skill.
+
+> ✅ Adds the instruction to `AGENTS.md`. The next session loads `masterskill` first.
+>
+> ❌ Adds the instruction to the current plan. The next session starts without loading `masterskill`.
+
 ## Decisions and planning
 
-**1. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
+**18. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
 
 > ✅ The export format is unclear. The agent asks “CSV or XLSX?” and waits for the user’s answer.
 >
@@ -58,6 +70,14 @@ Store temporary files, large working files, and intermediate outputs in `tmp/`. 
 > ✅ The agent extracts an archive into `tmp/`, saves the final output, and deletes the extracted files.
 >
 > ❌ The agent extracts the same archive into the project root and commits the extracted files.
+
+**17. Track external sources**
+
+For every external file or dataset you download and use, save the download in `tmp/`. In `docs/data/SOURCES.md`, record where you got it and what you used it for. Update the entry if either changes.
+
+> ✅ Saves the CSV in `tmp/` and records its URL and “used to calculate monthly sales totals.”
+>
+> ❌ Uses the CSV to calculate monthly sales totals and leaves it out of the source list.
 
 ## Interface copy
 

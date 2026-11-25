@@ -8,9 +8,22 @@ This document is the maintainer’s source of truth for [masterskill](../skills/
 
 ## Approved skill rules
 
+### Project startup
+
+**1. Load Masterskill first**
+
+The first time you use `masterskill` in a project, put this instruction at the top of the root `AGENTS.md`. Create the file if needed.
+
+> At the start of every agent session in this project, load `masterskill` before any other skill.
+
+> [!NOTE]
+> ✅ Adds the instruction to `AGENTS.md`. The next session loads `masterskill` first.
+>
+> ❌ Adds the instruction to the current plan. The next session starts without loading `masterskill`.
+
 ### Decisions and planning
 
-**1. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
+**18. Open questions** — When a decision is unresolved, ask the user and wait for their answer before taking any step that depends on it.
 
 > [!NOTE]
 > ✅ The export format is unclear. The agent asks “CSV or XLSX?” and waits for the user’s answer.
@@ -65,6 +78,15 @@ Store temporary files, large working files, and intermediate outputs in `tmp/`. 
 > ✅ The agent extracts an archive into `tmp/`, saves the final output, and deletes the extracted files.
 >
 > ❌ The agent extracts the same archive into the project root and commits the extracted files.
+
+**17. Track external sources**
+
+For every external file or dataset you download and use, save the download in `tmp/`. In `docs/data/SOURCES.md`, record where you got it and what you used it for. Update the entry if either changes.
+
+> [!NOTE]
+> ✅ Saves the CSV in `tmp/` and records its URL and “used to calculate monthly sales totals.”
+>
+> ❌ Uses the CSV to calculate monthly sales totals and leaves it out of the source list.
 
 ### Interface copy
 
@@ -193,7 +215,8 @@ Reorganize an existing project while preserving its behavior, data, and supporte
 - Write short, actionable instructions in `SKILL.md`. Use its description to say when the skill applies. Keep essential rules in the entry point and link supporting material only at the step that needs it.
 - Phrase rules positively. Replace each prohibition with a specific action or permitted outcome. Check that the rewrite enforces the same behavior as the original.
 - Give each rule a number and short title, then state the full rule. Include an example pair for every `masterskill` rule and where it clarifies a practical distinction in `masterskill-migration`. Use a blockquote with one line per example from the same situation. Start the positive example with ✅ and the negative example with ❌. Describe the agent’s action in plain, direct language.
-- Review one rule at a time in chat. Start each review with the original rule verbatim in a code block. Follow it with the proposed rule and both examples. Keep drafts in chat. On approval, record the approved wording and examples under their category in “Approved skill rules” and remove the corresponding original in the same edit.
+- Treat a request to add or change rules as the start of a review. Review each rule individually with the user in chat. Show the original rule verbatim in a code block, followed by the proposed wording, both examples, and the proposed category. Use an existing category when it fits and propose a new category when needed. Ask the user to explicitly approve the wording, examples, and category. Wait for approval before editing the approved rules or skill files for that rule or presenting the next rule. If the user requests changes, show the revised proposal and wait for approval again. Keep drafts in chat and the original submission in “Original rules” while review is pending.
+- After the user explicitly approves a proposal, record its approved wording and examples under the approved category. Add the category heading to the blueprint and affected skill if it is new. Remove the original from “Original rules” in the same edit and update the affected skill with the approved wording and examples under that category.
 - Give each document one job. The editable plan holds implementation steps and progress. The state document points to plans and records their status. Agent guidance identifies applicable coding conventions and repeatable scripts. Human documentation explains how to use the project.
 - Keep shared agent instructions in one authoritative place and make the Claude instructions follow it. Apply the preference for icons and labels to interfaces. Use the prose needed to keep instructions and human documentation understandable.
 - For commit messages, load the bundled [caveman-commit snapshot](../skills/masterskill/references/caveman-commit.md) on demand and omit co-author trailers. The main skill owns the decision to commit a completed feature. Refresh the snapshot manually.
