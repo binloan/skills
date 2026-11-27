@@ -5,6 +5,15 @@ description: Reorganize an existing project while preserving its behavior, data,
 
 # Masterskill Migration
 
+## Project startup
+
+**Load Masterskill before migration**
+Before applying this skill, load `masterskill` and use it as the rule basis for the migration. If `masterskill` is unavailable or cannot be loaded, stop before doing migration work and tell the user.
+
+> ✅ The agent loads `masterskill`, then follows the migration workflow.
+>
+> ❌ The agent cannot find or load `masterskill`, so it stops and informs the user instead of continuing with migration.
+
 ## Decisions and planning
 
 **Inspect and plan.** Map what depends on the paths being moved and record which checks pass or fail before editing. Write the proposed layout, stages, checks, and rollback in `plans/<name>.md`. Track progress there and status in `plans/STATE.md`. Verify recorded progress when resuming. Ask the user about unresolved decisions and wait before taking dependent steps. Read the [investigate-first snapshot](references/investigate-first.md) when a dependency or failure is unclear.
