@@ -4,7 +4,9 @@ This document is the maintainer’s source of truth for [masterskill](../skills/
 
 ## Original rules
 
-*All submitted rules are approved.*
+```
+- When you run background tasks that are expected to take time, automatically inform the user about the progress in fixed intervals. Do not make him wait without response
+```
 
 ## Approved skill rules
 
