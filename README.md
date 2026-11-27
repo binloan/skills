@@ -1,6 +1,6 @@
 # Skills
 
-Skills for building features and reorganizing existing projects. Both keep plans and progress in your repository so another agent can pick up where the last one stopped.
+Skills for building features, reorganizing existing projects, and translating documents into German.
 
 ## Install
 
@@ -9,6 +9,7 @@ Run the command for the skill you want in your project.
 ```sh
 npx skills add binloan/skills --skill masterskill
 npx skills add binloan/skills --skill masterskill-migration
+npx skills add binloan/skills --skill translate-to-german
 ```
 
 To install from a local checkout, replace `binloan/skills` with the path to that checkout.
@@ -28,6 +29,12 @@ To resume in a later session, ask the next agent to continue the CSV export plan
 > Use masterskill-migration to move the build scripts into `scripts/` and keep CI working.
 
 The agent maps script callers, records the current checks, and verifies each reversible stage against that baseline.
+
+### translate-to-german
+
+> Use translate-to-german to translate this document into German.
+
+The skill translates the text, checks the result independently, and returns it with a review. See the [translation guide](docs/translate-to-german.md) for supported formats.
 
 ## Rules
 

@@ -11,3 +11,8 @@ __pycache__/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Working files
+/tmp/
+/data/translation-test-texts/
+/data/translation-test-scripts/

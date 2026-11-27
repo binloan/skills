@@ -1,0 +1,3 @@
+[submodule "data/claude-translation-skill"]
+	path = data/claude-translation-skill
+	url = https://github.com/senshinji/claude-translation-skill
